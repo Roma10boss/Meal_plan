@@ -1,0 +1,17 @@
+<%= render "shared/page_title", title: "Your Meal Plan" %>
+<div class="well col-md-8 col-md-offset-2">
+  <h4><strong>Meal Plan Description: </strong></h4>
+  <hr />
+  <ul>
+    <li><strong><%= @meal_plan.goal %></strong> (Goal)</li>
+    <li><strong><%= @meal_plan.description%></strong> (Description)</li>
+
+</ul>
+<div class="mealplan-actions">
+  <% if logged_in? && current_user == @meal_plan.user %>
+    <%= link_to "Add Meals +", new_meal_plan_meal_schedule_path(@meal_plan), class:"btn btn-xs btn-xlarge" %>
+    <%= link_to "Edit Meal Plan", edit_meal_plan_path(@meal_plan), class:"btn btn-xs btn-warning" %>
+    <%= button_to "Delete Meal Plan", meal_plan_path(@meal_plan), method: "delete", data: { confirm: "Are you sure you want to delete this meal plan and associated meals?"}, class:"btn btn-xs btn-danger" %>
+  <% end %>
+    <%= link_to "View Meals +", meal_plan_meal_schedules_path(@meal_plan), class:"btn btn-xs btn-primary" %>
+</div>

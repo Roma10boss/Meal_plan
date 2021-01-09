@@ -1,0 +1,16 @@
+<%= render "shared/page_title", title: "Your Meals" %>
+
+<div class="col-md-8 well">
+  <h4> This meal contains: </h4>
+<ul>
+  <li>Protein: <%= @meal.try(:protein).capitalize %></li>
+  <li>Veggies: <%= @meal.try(:vegetable).capitalize %></li>
+  <li>Sides: <%= @meal.try(:side).capitalize %></li>
+  <li><%= @meal.try(:beverage_ounces) %> ounces of <%= @meal.try(:beverage) %></li>
+  <li>Eaten on: <%= @meal.try(:day).strftime("%b %d, %Y")%></li>
+  <li>Favorite? <%= @meal.try(:favorite) %></li>
+</ul>
+
+<div class="mealplan-actions">
+  <%= link_to "View Meal Schedules", meal_meal_schedules_path(@meal), class:"btn btn-xs btn-primary" %>
+</div>

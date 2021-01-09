@@ -1,0 +1,43 @@
+<%= form_for [@meal] do |f| %>
+
+<%= render partial: 'layouts/errors', locals: {object: @meal} %>
+  <div class="col-md-8 well">
+
+
+  <%= f.label :protein %>
+  <%= f.text_field :protein, placeholder: "Chicken" %>
+
+  <%= f.label :vegetable %>
+  <%= f.text_field :vegetable, placeholder: "Spinach" %>
+
+  <%= f.label :side %>
+  <%= f.text_field :side, placeholder: "Fries" %>
+
+  <%= f.label :beverage %>
+  <%= f.text_field :beverage, placeholder: "Water" %>
+
+  <%= f.label :beverage_ounces %>
+  <%= f.number_field :beverage_ounces, placeholder: "16 ounces" %>
+
+  <%= f.label :day %>
+  <%= f.date_field :day %>
+
+
+
+  <%= f.label :favorite %>
+  <%= f.select :favorite, [['No', 'false'],['Yes', 'true']] %>
+
+
+<br><br>
+
+
+  <%= f.label :meal_plan_id, "Select a Meal Plan"%>
+  <%= f.collection_select :meal_plan_ids, MealPlan.all, :id, :goal, prompt: true %>
+
+
+  <br><br>
+
+<div class="center">
+  <%= f.submit %>
+</div>
+<% end %>

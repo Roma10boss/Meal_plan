@@ -1,0 +1,30 @@
+<%= render "shared/page_title", title: "Log In" %>
+
+<%= form_for (@user), url: '/login'  do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, required:true  %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, required:true  %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, required:true  %>
+
+  <br><br>
+
+ <%= f.submit "Log in" %>
+
+  <div class="col-md-8">
+    <h3> Or <%= link_to "Log in with Github", "/github/callback" %></h3>
+  </div>
+
+ 
+
+
+<% end %>
+
+<br><br>
+
+<div class="center colormatch">
+  [ <%= link_to "Don't have an account? Click to Sign Up", signup_path %>]
+</div>

@@ -1,0 +1,26 @@
+<% obj.each do |meal| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class ="center">
+      </section>
+    </div>
+    <div class="col-md-8 well">
+       <h5><%= link_to "Current Meal", meal_path(meal) %></h5>
+        <ul>
+          <li><%= meal.try(:protein).capitalize %></li>
+          <li><%= meal.try(:vegetable).capitalize %></li>
+          <li><%= meal.try(:side).capitalize %></li>
+          <li><%= meal.try(:beverage_ounces) %> ounces of <%= meal.try(:beverage) %></li>
+          <li> Eaten on: <%= meal.try(:day).strftime("%b %d, %Y") %></li>
+          <li>Favorite(T/F)? <%= meal.try(:favorite) %></li>
+        </ul>
+       <p>
+         <span class="quiet"></span><small>Created <%= time_ago_in_words(meal.created_at) %> ago</small></span>
+       </p>
+       <div class="mealplan-actions">
+        <%= link_to "View Meal Schedules", meal_meal_schedules_path(meal), class:"btn btn-xs btn-primary" %>
+       </div>
+
+    </div>
+  </div>
+<% end %>

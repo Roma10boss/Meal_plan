@@ -1,0 +1,64 @@
+<div class="col-md-8 well">
+  <%= form_for (@meal_plan)  do |f| %>
+    <%= render partial: 'layouts/errors', locals: {object: @meal_plan} %>
+    <h4><center>Create a meal plan:</h4></center>
+
+  <div class="center">
+    <%= f.label :goal %>
+    <%= f.select(:goal, ["Weight Loss", "Tone", "Fat Loss", "Gain Muscle", "Maintain"]) %>
+  </div>
+
+  <div class="center">
+    <%= f.label :description %>
+    <%= f.select(:description, ["Regular", "Vegetarian", "Vegan", "Pescatarian", "Gluten Free", "Keto"]) %>
+  </div>
+  <br><br>
+</div>
+
+
+    <div class="col-md-8 well">
+      <h4><center>Add your meal schedule:</h4></center>
+      <%= f.fields_for :meal_schedule do |ms|%>
+
+    <div class="center">
+      <%= ms.label :eating_time %>
+      <%= ms.select(:eating_time, ["Morning", "Afternoon", "Evening", "Night"]) %>
+    </div>
+
+    <div class="center">
+      <%= ms.label :meal_type %>
+      <%= ms.select(:meal_type, ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"]) %>
+    </div>
+  </div>
+
+      <div class="col-md-8 well">
+        <h4><center>Add your meal:</h4></center>
+        <%= ms.fields_for :meal do |m|%>
+          <%= m.label :protein %>
+          <%= m.text_field :protein, placeholder: "Chicken", required: true %>
+
+          <%= m.label :vegetable %>
+          <%= m.text_field :vegetable, placeholder: "Spinach", required: true  %>
+
+          <%= m.label :side %>
+          <%= m.text_field :side, placeholder: "Fries", required: true  %>
+
+          <%= m.label :beverage %>
+          <%= m.text_field :beverage, placeholder: "Water", required: true  %>
+
+          <%= m.label :beverage_ounces %>
+          <%= m.number_field :beverage_ounces, placeholder: "16 ounces", required: true  %>
+
+          <%= m.label :day %>
+          <%= m.date_field :day, required: true  %>
+
+          <%= m.label :favorite %>
+          <%= m.select :favorite, [['No', 'false'],['Yes', 'true']], required: true  %>
+
+          <% end %>
+      <% end %>
+
+<div class="center">
+  <%= f.submit %>
+</div>
+<% end %>

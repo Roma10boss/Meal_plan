@@ -1,0 +1,37 @@
+<%= render "shared/page_title", title: "Edit Your Meals" %>
+<%= render partial: 'layouts/errors', locals: {object: @meal} %>
+
+<div class="col-md-8 well">
+
+<%= form_for [@meal]  do |f| %>
+
+  <%= f.label :protein %>
+  <%= f.text_field(:protein) %>
+
+  <%= f.label :vegetable %>
+  <%= f.text_field(:vegetable) %>
+
+  <%= f.label :side %>
+  <%= f.text_field(:side) %>
+
+  <%= f.label :beverage %>
+  <%= f.text_field(:beverage) %>
+
+  <%= f.label :beverage_ounces %>
+  <%= f.number_field(:beverage_ounces) %>
+
+  <%= f.label :day %>
+  <%= f.date_field(:day) %>
+
+  <%= f.label :favorite %>
+  <%= f.select :favorite, [['No', 'false'],['Yes', 'true']] %>
+
+  <br><br>
+
+  <%= f.label :meal_plan_id, "Select a Meal Plan"%>
+  <%= f.collection_select :meal_plan_ids, MealPlan.all, :id, :goal, prompt: true %>
+
+
+  <br><br>
+  <%= f.submit %>
+<% end %>

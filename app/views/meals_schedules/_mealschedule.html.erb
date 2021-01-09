@@ -1,0 +1,34 @@
+<% obj.each do |mealschedule| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class ="center">
+
+      </section>
+    </div>
+    <div class="col-md-8 well">
+      <h5>Meal Details: </h5>
+       <ul>
+         <li><%= mealschedule.meal.try(:protein).capitalize %></li>
+         <li><%= mealschedule.meal.try(:vegetable).capitalize %></li>
+         <li><%= mealschedule.meal.try(:side).capitalize %></li>
+         <li><%= mealschedule.meal.try(:beverage_ounces) %> ounces of <%= mealschedule.meal.try(:beverage) %></li>
+         <li><%= mealschedule.meal.try(:day).strftime("%b %d, %Y") %></li>
+         <li>Favorite(T/F)? <%= mealschedule.meal.try(:favorite) %></li>
+       </ul>
+       <h5><%= link_to "Meal Schedule:", meal_schedule_path(mealschedule) %></h5>
+       <ul>
+         <li> Eating Time: <%= mealschedule.eating_time %></li>
+         <li> Meal Type: <%= mealschedule.meal_type %></li>
+       </ul>
+       <p>
+         <span class="quiet"></span><small>Created <%= time_ago_in_words(mealschedule.created_at) %> ago</small></span>
+       </p>
+       <% if logged_in? && current_user.id == mealschedule.meal_plan.user_id %>
+        <div class="mealplan-actions">
+          <%= link_to "Edit Meal Schedule", edit_meal_schedule_path(mealschedule),  class:"btn btn-xs btn-warning" %>
+          <%= link_to "Delete Meal Schedule", meal_schedule_path(mealschedule), method: :delete, data: { confirm: "Are you sure you want to delete this meal schedule?"}, class:"btn btn-xs btn-danger" %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+<% end %>

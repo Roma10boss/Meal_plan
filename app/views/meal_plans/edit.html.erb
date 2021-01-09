@@ -1,0 +1,21 @@
+<%= render "shared/page_title", title: "Edit Your Meal Plan" %>
+
+<div class="col-md-8 well">
+  <%= form_for (@meal_plan)  do |f| %>
+  <h4><center>Edit meal plan:</h4></center>
+
+  <div class="center">
+    <%= f.label :goal %>
+    <%= f.select(:goal, ["Weight Loss", "Tone", "Fat Loss", "Gain Muscle", "Maintain"]) %>
+  </div>
+
+  <div class="center">
+    <%= f.label :description %>
+    <%= f.select(:description, ["Regular", "Vegetarian", "Vegan", "Pescatarian", "Gluten Free", "Keto"]) %>
+  </div>
+  <br><br>
+
+<div class="center">
+  <%= f.submit %>
+</div>
+<% end %>

@@ -1,0 +1,64 @@
+<%= form_for [@meal_schedule]  do |f| %>
+  <%= render partial: 'layouts/errors', locals: {object: @meal_schedule} %>
+  <%= f.hidden_field :meal_id %>
+
+  <div class="col-md-8 well">
+
+<div class="center">
+  <%= f.label :eating_time %>
+  <%= f.select(:eating_time, ["Morning", "Afternoon", "Evening", "Night"]) %>
+</div>
+
+<div class="center">
+  <%= f.label :meal_type %>
+  <%= f.select(:meal_type, ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"]) %>
+</div>
+
+<div class="center">
+  <%= f.label :meal_id, "Select a Meal"%>
+  <%= f.collection_select :meal_id, Meal.all, :id, :protein, prompt: true %>
+</div>
+
+<div class="center">
+  <%= f.label :meal_plan_id, "Select a Meal Plan"%>
+  <%= f.collection_select :meal_plan_id, MealPlan.all, :id, :goal, prompt: true %>
+</protein
+
+  <br><br>
+
+    <% if !params[:meal_id] %>
+      <h4>Or add a new meal:</h4>
+
+      <%= f.fields_for :meal do |v|%>
+      <%= v.label :protein %>
+      <%= v.text_field :protein, placeholder: "Chicken" %>
+
+      <%= v.label :vegetable %>
+      <%= v.text_field :vegetable, placeholder: "Spinach" %>
+
+      <%= v.label :side %>
+      <%= v.text_field :side, placeholder: "Fries" %>
+
+      <%= v.label :beverage %>
+      <%= v.text_field :beverage, placeholder: "Water" %>
+
+      <%= v.label :beverage_ounces %>
+      <%= v.number_field :beverage_ounces, placeholder: "16 ounces" %>
+
+      <%= v.label :day %>
+      <%= v.date_field :day %>
+
+      <%= v.label :favorite %>
+      <%= v.select :favorite, [['No', 'false'],['Yes', 'true']] %>
+      <% end %>
+    <% end %>
+
+    <br><br>
+
+
+
+<div class="center">
+  <%= f.submit %>
+</div>
+
+  <% end %>
