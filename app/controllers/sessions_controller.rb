@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
                 flash[:error] = "Sorry, there was an error with your account!"
                 redirect_to '/login'
             end 
+        end 
            
     end
 
@@ -37,5 +38,5 @@ class SessionsController < ApplicationController
     def auth
       request.env['omniauth.auth']
     end
-  
+end 
 end 
