@@ -5,6 +5,13 @@ class CreateMeals < ActiveRecord::Migration[6.0]
       t.datetime :day
       t.references :meal_plan, foreign_key: true
       t.timestamps
+      t.integer :beverage_ounces
+      t.string :side
+      t.string :vegetable
+      t.string :beverage
+      t.integer :drink
+      t.boolean :favorite, default: false
+      
     end
   end
 end

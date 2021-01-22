@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
  
  get '/auth/github/callback', to: 'sessions#create'
+ post '/auth/github/callback', to: 'sessions#create'
  
 
   resources :users

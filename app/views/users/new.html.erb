@@ -28,6 +28,7 @@
           <%= f.password_field :password, class:"form-control", required:true, placeholder: "Enter Your Password"  %>
         </div>
       </div>
+
       <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :password_confirmation, "Confirm Password" %>
@@ -38,7 +39,7 @@
       </div>
 
       <div class="col-md-8">
-        <h3> Or sign up with <%= link_to "Google", "/auth/auth/google_oauth2" %></h3>
+        <h3> Or sign up with <%= link_to "Github", "/auth/github/callback" %></h3>
       </div>
   <div class="form-group">
     <div class="col-md-offset-2 col-md-10">

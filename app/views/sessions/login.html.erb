@@ -14,8 +14,9 @@
 
  <%= f.submit "Log in" %>
 
-  <div class="col-md-8">
-    <h3> Or <%= link_to "Log in with Github", "/github/callback" %></h3>
+  <div class="col-md-8">   
+
+   <% if logged_in? -%>Welcome, <%= current_user.name %><% end -%>
   </div>
 
  

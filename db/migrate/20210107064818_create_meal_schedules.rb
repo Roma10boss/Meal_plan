@@ -1,6 +1,6 @@
-class CreateMealShedule < ActiveRecord::Migration[6.0]
+class CreateMealSchedules < ActiveRecord::Migration[6.0]
   def change
-    create_table :meal_shedules do |t|
+    create_table :meal_schedules do |t|
       t.string :eating_time
       t.string :meal_type
       t.references :meal, foreign_key: true

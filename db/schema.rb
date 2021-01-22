@@ -33,15 +33,18 @@ ActiveRecord::Schema.define(version: 2021_01_07_065555) do
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "protein"
+    t.string "food"
     t.datetime "day"
+    t.integer "meal_plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "favorite", default: false
     t.integer "beverage_ounces"
-    t.string "beverage"
-    t.string "vegetable"
     t.string "side"
+    t.string "vegetable"
+    t.string "beverage"
+    t.integer "drink"
+    t.boolean "favorite", default: false
+    t.index ["meal_plan_id"], name: "index_meals_on_meal_plan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +60,5 @@ ActiveRecord::Schema.define(version: 2021_01_07_065555) do
   add_foreign_key "meal_plans", "users"
   add_foreign_key "meal_schedules", "meal_plans"
   add_foreign_key "meal_schedules", "meals"
+  add_foreign_key "meals", "meal_plans"
 end
