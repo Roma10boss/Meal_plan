@@ -2,6 +2,7 @@ class MealPlansController < ApplicationController
     before_action :set_meal_plan, only: [:edit, :update, :show, :delete]
     before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
     before_action :require_same_user, only: [:edit, :update, :delete]
+    
   
     def index
       @meal_plans = current_user.meal_plans.paginate(page: params[:page], per_page: 2)

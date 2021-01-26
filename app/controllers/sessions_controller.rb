@@ -5,13 +5,14 @@ class SessionsController < ApplicationController
     def create 
 
         if auth 
-            user = User.find_or_create_by(email: auth['info']['email']) do |u|
+            @user = User.find_or_create_by(email: auth['info']['email']) do |u|
                u.password = SecureRandom.hex(12) 
+            
             end 
             
-            if user 
-                flash[:success] = "Welcome back #{user.name}!"
-                redirect_to user_path(user)
+            if @user 
+                flash[:success] = "Welcome back #{@user.name}!"
+                redirect_to meal_plans_path
             else
                 flash[:error] = "Sorry, there was an error with your account!"
                 redirect_to '/login'
