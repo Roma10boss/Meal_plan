@@ -2,7 +2,13 @@ class SessionsController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:show]
     require 'securerandom'
 
-    def create 
+    def new
+        @user = User.new
+        render :login
+    end
+
+
+    def create
 
         if auth 
             @user = User.find_or_create_by(email: auth['info']['email']) do |u|
@@ -21,11 +27,7 @@ class SessionsController < ApplicationController
            
     end
 
-    def new
-        @user = User.new
-        render :login
-    end
-
+    
     def home
         redirect_to meal_plans_path if logged_in?
     end
